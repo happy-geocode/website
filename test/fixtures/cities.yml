@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: 
+  country_ref: MyString
+  state_ref: MyString
+  center: MyString
+  radius: MyString
+
+two:
+  name: 
+  country_ref: MyString
+  state_ref: MyString
+  center: MyString
+  radius: MyString
