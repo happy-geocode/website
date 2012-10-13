@@ -1,3 +1,15 @@
-%h1 Welcome to the happy geocode
+.page-heade
+  %h1.happy-caption
+    Welcome
+    %small to the world of happy geocoding
 
-If you're happy and you know it, geocode :)
+%p Start geocoding here :)
+
+.happy-map-controls
+  %form.form-search
+    %input.input-medium.search-query{ type: 'text' }
+    %button.btn
+      %i.icon-search
+      Search
+.happy-map
+  = image_tag 'http://placehold.it/900x450'

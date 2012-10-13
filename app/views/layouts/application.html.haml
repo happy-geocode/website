@@ -6,6 +6,10 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
 %body
-  = render partial: 'layouts/nav'
+  .container
+    = render partial: 'layouts/nav'
+    = yield
 
-  = yield
+    %footer.happy-footer.muted
+      This project was built in 48 hours for the 
+      = link_to "Rails Rumble 2012", "http://railsrumble.com", target: '_blank'

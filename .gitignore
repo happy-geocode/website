@@ -19,3 +19,5 @@
 
 # Exclude Bin Files
 /bin/*
+
+/.sass-cache
