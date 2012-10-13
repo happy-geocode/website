@@ -26,6 +26,11 @@
       .navbar-inner
         = link_to "Happy Geocode #{happy_face}", root_path, class: 'brand happy-caption'
         = render_navigation
+        %form.navbar-form.form-search.pull-right
+          .input-append
+            %input.search-query{ type: 'text' }
+            %button.btn
+              %i.icon-search
 
     .happy-container
       .alert.alert-warning{ style: 'text-align: center;' }
