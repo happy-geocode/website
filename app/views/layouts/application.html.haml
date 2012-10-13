@@ -27,8 +27,11 @@
         = render_navigation
 
     .happy-container
-      .pull-right
-        = link_to "vote for us", 'http://railsrumble.com/entries/210-happy-geocode'
+      .alert.alert-info
+        This project was started as a
+        = link_to "Rails Rumble 2012", 'http://railsrumble.com'
+        project. If you like it, please consider
+        = link_to "voting for us.", 'http://railsrumble.com/entries/210-happy-geocode'
       = yield
 
     %footer.happy-footer.muted
