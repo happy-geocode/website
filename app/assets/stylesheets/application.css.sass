@@ -9,6 +9,8 @@
 @import "twitter/bootstrap-no-sprites"
 @import url(http://fonts.googleapis.com/css?family=Happy+Monkey)
 
+$happy_bright_blue: #D9EDF7
+
 .page-header
   margin-bottom: 10px
 
@@ -29,8 +31,19 @@
   margin-bottom: 50px
 
 .happy-about
-  margin-bottom: 10px
+  background-color: $happy_bright_blue
+  padding: 28px 10px
+
+  .happy-lie
+    display: block
+    margin: 20px auto 0
+    width: 795px
+
+  .happy-about-boxes
+    overflow: auto
+
   .about-item
+    background: white
     min-height: 463px
     .happy-content
       min-height: 220px
@@ -39,6 +52,10 @@
 
 #supporters, #team
   margin-top: 30px
+
+#supporters
+  background-color: $happy_bright_blue
+  padding: 10px
 
 .supporters-list
   list-style-type: none

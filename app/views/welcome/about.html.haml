@@ -3,14 +3,17 @@
     = "Happy Geocode #{happy_face}"
     %small Openstreetmap geocoding done right
 
-  .row.happy-about
-    = render partial: 'welcome/search'
-    = render partial: 'welcome/map'
-    = render partial: 'welcome/api'
+  .happy-about
+    .row
+      .happy-about-boxes
+        = render partial: 'welcome/search'
+        = render partial: 'welcome/map'
+        = render partial: 'welcome/api'
 
-%small.muted
-  1: Our manager claimed that. Please do not sue us for false statements he made.
-  He is currently out of office for a time travel and will return last year.
+    %small.muted.happy-lie
+      1: Our manager claimed that. Please do not sue us for false statements he made.
+      He is currently out of office for a time travel and will return last year.
+
 
 %section#supporters
   %h1.happy-caption
