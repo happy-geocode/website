@@ -33,7 +33,8 @@
               %i.icon-search
 
     .happy-container
-      = render partial: 'layouts/rumble_warning'
+      - unless active_navigation_item_key == :map
+        = render partial: 'layouts/rumble_warning'
       = yield
 
     %footer.happy-footer.muted
