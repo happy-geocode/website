@@ -29,7 +29,7 @@ require 'bundler/capistrano'
 #############################################
 
 GITHUB_REPOSITORY_NAME = 'r12-team-210'
-LINODE_SERVER_HOSTNAME = 'r12-team-210'
+LINODE_SERVER_HOSTNAME = 'happy-geocode.r12.railsrumble.com'
 
 #############################################
 #############################################
