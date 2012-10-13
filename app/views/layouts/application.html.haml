@@ -8,6 +8,8 @@
 %body
   .container
     = render partial: 'layouts/nav'
+    .pull-right
+      = link_to "vote for us", 'http://railsrumble.com/entries/210-happy-geocode'
     = yield
 
     %footer.happy-footer.muted
