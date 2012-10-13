@@ -8,9 +8,9 @@
 
     :javascript
       var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-35565702-1']);
-      _gaq.push(['_setDomainName', 'happy-geoco.de']);
-      _gaq.push(['_setAllowLinker', true]);
+
+      _gaq.push(['_setAccount', '#{request.domain == "railsrumble.com" ? 'UA-35565702-2' : 'UA-35565702-1'}']);
+      _gaq.push(['_setDomainName', '#{request.domain == "railsrumble.com" ? 'r12.railsrumble.com' : 'happy-geoco.de'}']);
       _gaq.push(['_trackPageview']);
 
       (function() {
@@ -36,5 +36,5 @@
       = yield
 
     %footer.happy-footer.muted
-      This project was built in 48 hours for the 
+      This project was built in 48 hours for the
       = link_to "Rails Rumble 2012", "http://railsrumble.com", target: '_blank'
