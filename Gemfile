@@ -25,6 +25,8 @@ end
 gem 'jquery-rails'
 gem "haml-rails"
 
+gem 'simple-navigation'
+
 gem 'capistrano'
 
 group :production do

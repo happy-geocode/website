@@ -7,10 +7,16 @@
     = csrf_meta_tags
 %body
   .container
-    = render partial: 'layouts/nav'
-    .pull-right
-      = link_to "vote for us", 'http://railsrumble.com/entries/210-happy-geocode'
-    = yield
+
+    .navbar
+      .navbar-inner
+        = link_to 'Happy geocode :D', root_path, class: 'brand happy-caption'
+        = render_navigation
+
+    .happy-container
+      .pull-right
+        = link_to "vote for us", 'http://railsrumble.com/entries/210-happy-geocode'
+      = yield
 
     %footer.happy-footer.muted
       This project was built in 48 hours for the 
