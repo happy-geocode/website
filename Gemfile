@@ -27,6 +27,9 @@ gem "haml-rails"
 
 gem 'simple-navigation'
 
+# Syntax highlighting
+gem 'coderay'
+
 gem 'capistrano'
 
 group :production do

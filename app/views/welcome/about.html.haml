@@ -14,6 +14,24 @@
       1: Our manager claimed that. Please do not sue us for false statements he made.
       He is currently out of office for a time travel and will return last year.
 
+%section#example
+  %h1.happy-caption Example
+  %p
+    Give us an address and we give you all the geo data
+    = happy_face
+  .happy-example
+    .happy-input.pull-left
+      %strong.desc Search string:
+      .code= CodeRay.scan("'Bruesseler Strasse 55, 5067 Koeln'", :javascript).div.html_safe
+    .happy-io.pull-left
+      \=>
+    .happy-output.pull-left
+      %strong.desc Output:
+      .code= CodeRay.scan("{ lat: '50.937993', lon: '6.934578' }", :javascript).div.html_safe
+    = link_to '#', class: 'btn btn-success perform-example pull-left' do
+      Run
+      %i.icon-play
+
 
 %section#supporters
   %h1.happy-caption
