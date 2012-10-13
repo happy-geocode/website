@@ -32,8 +32,8 @@ SimpleNavigation::Configuration.run do |navigation|
 
   # Define the primary navigation
   navigation.items do |primary|
-    primary.item :index, 'Geocode!', root_path
     primary.item :about, 'About', about_path
+    primary.item :map, 'Geocode', map_path
     primary.item :api, 'API docs', '#'
     primary.dom_class = 'nav'
 

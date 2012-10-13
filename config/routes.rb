@@ -1,7 +1,8 @@
 HappyGeocode::Application.routes.draw do
-  root to: 'welcome#index'
 
   match 'about' => 'welcome#about'
+  match 'map' => 'maps#index'
+  match '/' => redirect('/about')
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
