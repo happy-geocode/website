@@ -4,50 +4,9 @@
     %small Openstreetmap geocoding done right
 
   .row.happy-about
-    .span3.offset1.about-item.thumbnail
-      = image_tag 'street.jpg', class: 'img-rounded thumb'
-      .caption
-        %h4.happy-caption
-          Search streets
-        %p
-          Enter an address
-          %strike or landmark
-          you wish to search for
-          and be amazed by the awesome correct results you get back.<sup>1</sup>
-        %p
-          Happy geocode is always right and never fails.<sup>1</sup>
-        %p
-          If you are not an Earthling, be not afraid. We will eventually
-          add support for your galaxy, too.<sup>1</sup>
-
-    .span3.about-item.thumbnail
-      = image_tag 'map_shot.jpg', class: 'img-rounded thumb'
-      .caption
-        %h4.happy-caption
-          Watch on map
-        %p
-          Directly<sup>1</sup>
-          see the results of your query on a sweet map.
-        %p
-          Quickly find your way around. Our maps and geo-data are made
-          possible by the great
-          = link_to 'Openstreetmap project.', 'http://openstreetmap.org', target: '_blank'
-
-    .span3.about-item.thumbnail
-      = image_tag 'api.jpg', class: 'img-rounded thumb'
-      .caption
-        %h4.happy-caption
-          Use our API
-        %p
-          You do not need a map or want to roll your own?
-          No problem, simply use our API and work with raw
-          data such as lat/lon.
-        %p
-          It is like uber fast.<sup>1</sup>
-        %p
-          Our backend is based on
-          = link_to 'ArangoDB', 'http://arangodb.org', target: '_blank'
-          &ndash; a NoSQL database with native geo indices.
+    = render partial: 'welcome/search'
+    = render partial: 'welcome/map'
+    = render partial: 'welcome/api'
 
 %small.muted
   1: Our manager claimed that. Please do not sue us for false statements he made.

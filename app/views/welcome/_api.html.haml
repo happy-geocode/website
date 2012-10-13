@@ -1,0 +1,20 @@
+.span3.about-item.thumbnail
+  = image_tag 'api.jpg', class: 'img-rounded thumb'
+  .caption
+    .happy-content
+      %h4.happy-caption
+        Use our API
+      %p
+        You do not need a map or want to roll your own?
+        No problem, simply use our API and work with raw
+        data such as lat/lon.
+      %p
+        It is like uber fast.<sup>1</sup>
+      %p
+        Our backend is based on
+        = link_to 'ArangoDB', 'http://arangodb.org', target: '_blank'
+        &ndash; a NoSQL database with native geo indices.
+
+    = link_to api_docs_path, class: 'btn btn-info' do
+      %i.icon-eye-open
+      Read now
