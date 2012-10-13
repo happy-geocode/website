@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
       {
         name: "bitboxer",
         github: "https://github.com/bitboxer",
-        desc: %q{Bodobodododo is not Frododododo},
+        desc: %q{Owns a colorful collection of crayons},
         img: 'bitboxer.jpg'
       },
       {
