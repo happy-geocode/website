@@ -1,1 +1,23 @@
-About page
+%h1.page-header About Happy Geocode
+
+%p 
+  This project was started as a
+  = link_to "Rails Rumble 2012", 'http://railsrumble.com'
+  project. If you like it, please consider
+  = link_to "voting for us.", 'http://railsrumble.com/entries/210-happy-geocode'
+
+%h2 The team
+
+%p
+  Meet the humble folks behind this piece of software:
+
+.row-fluid
+  %ul.thumbnails
+    - @team_members.each do |hero|
+      %li.span3
+        .thumbnail
+          = image_tag hero[:img], size: '200x200'
+          .caption
+            %h4= hero[:name]
+            %p= hero[:desc]
+
