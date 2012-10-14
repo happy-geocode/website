@@ -1,25 +1,22 @@
 %h1.page-header.happy-caption API documentation
 
-%h2 Search for address
+%h2.happy-caption Search for an address
 
-%p
-  :markdown
-    Simply send a address to the geocoder with the string as **query** parameter:
+:markdown
+  Simply send a address to the geocoder with the string as **query** parameter:
 
 .code= CodeRay.scan("http://happy-geoco.de/api/geocode?query=Bruesseler%20Strasse%2055,%2050672%20Koeln", :html).div.html_safe
 
-%p
-  :markdown
-    The result will be an array list of geocoded addresses. Each address has a qualifier that
-    explains the quality of the match.
+:markdown
+  The result will be an array list of geocoded addresses. Each address has a qualifier that
+  explains the quality of the match.
 
 .code= CodeRay.scan("[{\n  \"street_name\": \"Bruesseler Strasse\",\n  \"street_number\": \"55\",\n  \"zip\": \"50672\",\n  \"city\": \"Köln\",\n  \"state\": \"NRW\",\n  \"country\": \"Germany\",\n  \"lat\": 50.937966,\n  \"lng\": 6.934578,\n  \"accuracy\": \"exact\",\n  \"accuracy_face\": \":)\"\n}]", :json).div.html_safe
 
-%p
-  :markdown
-    Most of the fields are self explanitory. If the match is not exact, several results will be return in that array.
+:markdown
+  Most of the fields are self explanitory. If the match is not exact, the result array will contain several entries.
 
-    The **accuray** field is a hint about the quality of the geocoordinates. Possible values are:
+  The **accuray** field is a hint about the quality of the geocoordinates. Possible values are:
 
 %table.accuracy_explained.table.table-striped
   %thead
@@ -28,32 +25,45 @@
         Value
       %th
         Meaning
+      %th.accurracy_happyface
+        Accurracy face
   %tbody
     %tr
       %td
         exact
       %td
         perfect match for the address
+      %td
+        \:D
     %tr
       %td
         street
       %td
         the street could be found, but we didn't find a match for the street number
+      %td
+        \:)
     %tr
       %td
         city
       %td
         we didn't find the street and give you the center of the city as a result
+      %td
+        \:O
     %tr
       %td
         zip
       %td
         we didn't find the street, but we have the center of that zip code area and give it to you instead
+      %td
+        \:/
     %tr
       %td
         wild_guess
       %td
-        okay, we found something, but this is most possibly wrong
+        okay, we found something, but this is most likely wrong
+      %td
+        \:(
 
 %p
-  Additionally we provide you with a accuracy-face that displays the accuracy in a nicer way :) .
+  Please mind the accuracy_face field - it displays the accuracy level in a not-boring way
+  = happy_face
