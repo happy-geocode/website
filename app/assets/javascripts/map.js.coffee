@@ -55,11 +55,11 @@ showTutorialTooltip = ->
     css:
       backgroundColor: 'rgba(0, 0, 0, 0.7)'
       border: 'none'
-      borderRadius: 'none'
+      borderRadius: '10px'
       boxShadow: 'none'
-      padding: '10px'
-      color: '#D9EDF7'
-      opacity: 1
+      padding: '10px 20px'
+      color: 'white'
+      opacity: 0.9
   )
   # Save cookie so the tooltip can be omitted after first load
   $.cookie('tooltip-shown', 'true', { path: '/' })
