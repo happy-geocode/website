@@ -61,11 +61,22 @@ showTutorialTooltip = ->
     clearTimeout(t)
   t = setTimeout(hideTooltip, 5000)
 
+`$.urlParam = function(name){
+  var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+  if (!results)
+  { 
+      return 0; 
+  }
+  return results[1] || 0;
+}`
 
 $ ->
   showTutorialTooltip()
 
-  $.get '/api/geocodes?query=', 'json', (data)->
+  search_for = $.urlParam('query')
+  geocode_api_call = "/api/geocodes?query=#{search_for}"
+
+  $.get geocode_api_call, (data)->
     initHappyMap(data)
 
   ($ window).resize =>
