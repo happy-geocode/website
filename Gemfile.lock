@@ -4,6 +4,12 @@ GIT
   specs:
     leaflet-rails (0.4.4)
 
+GIT
+  remote: git@github.com:happy-geocode/parsec.git
+  revision: 4070067e0ca3d6432b904b97ae32484b12617ebf
+  specs:
+    parsec (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -166,6 +172,7 @@ DEPENDENCIES
   jquery-rails
   leaflet-rails!
   mysql2
+  parsec!
   rails (= 3.2.8)
   sass-rails (~> 3.2.3)
   simple-navigation
