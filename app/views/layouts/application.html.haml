@@ -21,22 +21,7 @@
 
 %body
   .container
-
-    .navbar.happy-navbar
-      .navbar-inner
-        = link_to "Happy Geocode #{happy_face}", root_path, class: 'brand happy-caption'
-        = render_navigation
-        %form#mapSearch.navbar-form.form-search.pull-right
-          #mapTooltip
-            %h4 Search for a (German) address here
-            %p
-              Just search for a location. See the
-              = link_to 'example', '/#example', color: '#fff'
-              if you need help.
-          .input-append
-            %input.search-query{ type: 'text' }
-            %button.btn
-              %i.icon-search
+    = render partial: 'layouts/navigation'
 
     .happy-container
       - unless active_navigation_item_key == :map
