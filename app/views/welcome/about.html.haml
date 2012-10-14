@@ -29,8 +29,9 @@
       \=>
     .happy-output.pull-left
       %strong.desc Output:
-      .code= CodeRay.scan("{ lat: '50.937993', lon: '6.934578' }", :javascript).div.html_safe
-    = link_to '#', class: 'btn btn-success perform-example pull-left' do
+      .code= CodeRay.scan("{\n  street_name: 'Bruesseler Strasse',\n  street_number: '55',\n  zip: '50672',\n  city: 'Koeln', state: 'NRW',\n  country: 'Germany',\n  lat: '50.937993', lng: '6.934578'\n}", :javascript).div.html_safe
+    = link_to "#{map_path}?query=Bruesseler Strasse 55, 50672 Koeln",
+        class: 'btn btn-success perform-example pull-left' do
       Run
       %i.icon-play
 
