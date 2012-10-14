@@ -15,6 +15,7 @@ addGeoPoints = (map, data=[]) ->
   if data.length == 0
     center = new L.LatLng(50.941252, 6.958283)
     map.setView(center, 13)
+    alert "I'm afraid I can't do that, Dave :(\nBut I will try to improve our dataset in the following weeks"
   else
     drawEachLocation(map, data)
     map.fitBounds(getPoints(data))
