@@ -19,19 +19,6 @@ class Geocoder
   private
 
   def enrich_parsed(parsed)
-    #[{
-      #street_name: parsed.street_name,
-      #street_number: parsed.street_number,
-      #zip: parsed.zip,
-      #city: parsed.city,
-      #state: parsed.state,
-      #country: "Germany",
-      #lat: 50.937229,
-      #lon: 6.832788,
-      #accuracy: 'exact',
-      #accuracy_face: ":)"
-    #}]
-
     # Try to find by street
     found_entries = find_streets(parsed)
 
@@ -50,15 +37,22 @@ class Geocoder
     end
 
     search_options = {}
-    search_options[:name] = parsed.street_name
+    search_options[:street] = parsed.street_name
     search_options[:zip] = parsed.zip if parsed.zip
     search_options[:city] = parsed.city if parsed.city
 
     street_matches = Street.find(search_options)
 
     street_matches.map do |s|
-      s[:accuracy] = 'street'
-      s[:accuracy_face] = ':)'
+      spoint = s.street_points.first
+      {
+        street: s.name,
+        city: s.city.name,
+        lat: spoint.lat,
+        lon: spoint.lon,
+        accurarcy: 'street',
+        accuracy_face: ':)'
+      }
     end
   end
 

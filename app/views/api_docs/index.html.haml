@@ -5,7 +5,7 @@
 :markdown
   Simply send a address to the geocoder with the string as **query** parameter:
 
-.code= CodeRay.scan("http://happy-geoco.de/api/geocode?query=Bruesseler%20Strasse%2055,%2050672%20Koeln", :html).div.html_safe
+.code= CodeRay.scan("http://happy-geoco.de/api/geocodes?query=Bruesseler%20Strasse%2055,%2050672%20Koeln", :html).div.html_safe
 
 :markdown
   The result will be an array list of geocoded addresses. Each address has a qualifier that

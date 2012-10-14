@@ -7,7 +7,6 @@ class Street
   attribute :city_ref
   attribute :zip_ref
   attribute :other_part_refs
-  attribute :points
   attribute :street
 
   attr_accessor :city
@@ -48,6 +47,10 @@ class Street
     street.city = city if city
 
     [street]
+  end
+
+  def street_points
+    StreetPoint.by_example street_ref: osm_id
   end
 
   def to_s
