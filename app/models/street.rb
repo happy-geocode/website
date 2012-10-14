@@ -10,27 +10,25 @@ class Street
   attribute :street
 
   attr_accessor :city
+  attr_accessor :zip
 
   def Street.find_by_name(name)
     self.find_by_aql "FOR street IN streets FILTER street.name_normalized == '#{name}' RETURN street"
   end
-
-  # def Street.find_by_name_and_city(name, city)
-    # city = City.find_first_by_name city
-    # [city.center, city.radius]
-  # end
 
   def Street.find(params)
     if params.has_key? :zip
       zip = Zip.find_by_name(params[:zip]).first
       lat = zip.center["lat"]
       lon = zip.center["lon"]
-      radius = 2000 #city.radius
+      radius = 2000 #zip.radius
     elsif params.has_key? :city
       city = City.find_by_name(params[:city]).first
       lat = city.center["lat"]
       lon = city.center["lon"]
       radius = 2000 #city.radius
+    else
+      return Street.find_by_name params[:name]
     end
 
     street_subquery = "(for street in streets filter street.name_normalized == '#{params[:street]}' return street.osm_id)"
@@ -45,6 +43,7 @@ class Street
     street = Street.first_example osm_id: street_points.sample.street_ref
 
     street.city = city if city
+    street.zip  = zip if zip
 
     [street]
   end
