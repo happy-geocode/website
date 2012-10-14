@@ -51,6 +51,8 @@ showTutorialTooltip = ->
       color: '#D9EDF7'
       opacity: 1
   )
+  # Save cookie so the tooltip can be omitted after first load
+  $.cookie('tooltip-shown', 'true', { path: '/' })
 
   t = null
   hideTooltip = ->
@@ -71,7 +73,8 @@ showTutorialTooltip = ->
 }`
 
 $ ->
-  showTutorialTooltip()
+  unless $.cookie('tooltip-shown')
+    showTutorialTooltip()
 
   search_for = $.urlParam('query')
   geocode_api_call = "/api/geocodes?query=#{search_for}"

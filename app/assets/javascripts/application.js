@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require leaflet
 //= require jquery.balloon
+//= require jquery.cookie
 //= require twitter/bootstrap
 //= require_tree .
