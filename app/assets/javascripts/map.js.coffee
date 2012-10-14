@@ -26,7 +26,7 @@ drawEachLocation = (map, locations)->
     descr += "</strong><br/>"
     descr += "#{location.zip}" if location.zip?
     descr += " #{location.city}" if location.city?
-    descr += "<br/><small>#{location.accuracy} #{location.lat}, #{location.lon}</small>"
+    descr += "<br/><small>#{location.lat}, #{location.lon} (#{location.accuracy})</small>"
 
     map.addLayer(marker)
     marker.bindPopup(descr)
