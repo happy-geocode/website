@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require leaflet
+//= require jquery.balloon
 //= require twitter/bootstrap
 //= require_tree .
