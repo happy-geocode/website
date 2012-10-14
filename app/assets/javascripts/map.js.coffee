@@ -87,7 +87,10 @@ $ ->
     showTutorialTooltip()
 
   search_for = $.urlParam('query')
-  geocode_api_call = "/api/geocodes?query=#{search_for}"
+  geocode_api_call = "/api/geocodes"
+
+  if search_for
+    geocode_api_call += "?query=#{search_for}"
 
   $.get geocode_api_call, (data)->
     initHappyMap(data)
