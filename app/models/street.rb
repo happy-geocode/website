@@ -9,7 +9,7 @@ class Street
   attribute :other_part_refs
   attribute :street
 
-  attr_accessor :city
+  attr_accessor :city_name
   attr_accessor :zip
 
   def Street.find_by_name(name)
@@ -44,8 +44,12 @@ class Street
 
     street = Street.first_example osm_id: street_points.sample.street_ref
 
-    street.city = city if city
-    street.zip  = zip if zip
+    street.city_name = city.name if city
+
+    if zip
+      street.zip = zip.name
+      street.city_name = zip.city
+    end
 
     [street]
   end
