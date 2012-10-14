@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: 
+  name_normalized: 
+  center: MyString
+  radius: MyString
+
+two:
+  name: 
+  name_normalized: 
+  center: MyString
+  radius: MyString
