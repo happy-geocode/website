@@ -21,22 +21,24 @@ class Street
       zip = Zip.find_by_name(params[:zip]).first
       lat = zip.center["lat"]
       lon = zip.center["lon"]
-      radius = 2000 #zip.radius
+      radius = zip.radius
     elsif params.has_key? :city
       city = City.find_by_name(params[:city]).first
       lat = city.center["lat"]
       lon = city.center["lon"]
-      radius = 2000 #city.radius
+      radius = city.radius
     else
       return Street.find_by_name params[:name]
     end
 
-    street_subquery = "(for street in streets filter street.name_normalized == '#{params[:street]}' return street.osm_id)"
+    osm_ids = Ashikawa::AR::Setup.databases[:default].query "for street in streets filter street.name_normalized == '#{params[:street]}' return { osm_id: street.osm_id }"
+    osm_ids = osm_ids.map { |raw| raw["osm_id"] }
 
-    query = "FOR street_point IN within(street_points, #{lat}, #{lon}, #{radius}) " +
-            "LET street_refs = #{street_subquery} " +
-            "FILTER street_point.street_ref IN street_refs " +
-            "RETURN street_point"
+    street_subquery = "['" + osm_ids.join("', '") + "']"
+
+    query = "for street_point in within(street_points, #{lat}, #{lon}, #{radius}) " +
+            "filter street_point.street_ref in #{street_subquery} " +
+            "return street_point"
 
     street_points = StreetPoint.find_by_aql query
 
