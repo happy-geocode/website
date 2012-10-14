@@ -10,6 +10,7 @@ class Geocoder
   # - country = if you want to help us detect the country for the adress
   # - lat, long = if you want to help us detect the most relevant adress
   def find(params)
+    return [] if params[:query].blank?
     parsed = Parsec.parse params[:query]
     enrich_parsed parsed
   end
