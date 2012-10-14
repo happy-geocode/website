@@ -10,18 +10,37 @@ class Street
   attribute :points
   attribute :street
 
+  attr_accessor :city
+
   def Street.find_by_name(name)
     self.find_by_aql "FOR street IN streets FILTER street.name_normalized == '#{name}' RETURN street"
   end
 
-  def Street.find_by_name_and_city(name, city)
-    city = City.find_first_by_name city
-    [city.center, city.radius]
-  end
-
-  # def Street.find_by_name_and_number(name, number)
-    # self.find_by_aql "FOR street IN streets FILTER street.name_normalized == '#{name}' && '#{number}' in street.street_numbers RETURN street"
+  # def Street.find_by_name_and_city(name, city)
+    # city = City.find_first_by_name city
+    # [city.center, city.radius]
   # end
+
+  def Street.find(params)
+    city = City.find_by_name(params[:city]).first
+    lat = city.center["lat"]
+    lon = city.center["lon"]
+    radius = 2000 #city.radius
+
+    street_subquery = "(for street in streets filter street.name_normalized == '#{params[:street]}' return street.osm_id)"
+
+    query = "FOR street_point IN within(street_points, #{lat}, #{lon}, #{radius}) " +
+            "LET street_refs = #{street_subquery} " +
+            "FILTER street_point.street_ref IN street_refs " +
+            "RETURN street_point"
+
+    street_points = StreetPoint.find_by_aql query
+
+    street = Street.first_example osm_id: street_points.sample.street_ref
+    street.city = city
+
+    street
+  end
 
   def to_s
     "<#Street name='#{name}'>"
