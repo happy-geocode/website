@@ -52,20 +52,20 @@ showTutorialTooltip = ->
       opacity: 1
   )
 
-  ($ '#mapSearch').focus ->
-    hideTooltip()
-
   t = null
   hideTooltip = ->
     ($ '#mapSearch').hideBalloon()
     clearTimeout(t)
   t = setTimeout(hideTooltip, 5000)
 
+  ($ '#mapSearch .search-query').focus ->
+    hideTooltip()
+
 `$.urlParam = function(name){
   var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
   if (!results)
-  { 
-      return 0; 
+  {
+      return 0;
   }
   return results[1] || 0;
 }`
