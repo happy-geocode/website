@@ -24,6 +24,7 @@ end
 
 gem 'jquery-rails'
 gem "haml-rails"
+gem 'redcarpet', '~> 2.1.0'
 
 gem 'simple-navigation'
 

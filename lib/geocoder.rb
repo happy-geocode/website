@@ -28,7 +28,8 @@ class Geocoder
       country: "Germany",
       lat: 50.937229,
       lng: 6.832788,
-      accuracy: 'exact'
+      accuracy: 'exact',
+      accuracy_face: ":)"
     }]
   end
 end
