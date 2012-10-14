@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'geocoder'
 module Api
   class GeocodesController < ApplicationController

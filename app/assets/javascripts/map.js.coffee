@@ -1,20 +1,23 @@
-initHappyMap = (data=[])->
+initHappyMap = (data=[])=>
   if ($ '#happyMap').size() < 1
     return
 
-  if data.length == 0
-    center = new L.LatLng(50.941252, 6.958283)
-
   maximizeMap(($ '#happyMap'))
-  map = new L.Map('happyMap', { center: center, zoom: 13 })
+  map = new L.Map('happyMap', { center: new L.LatLng(50.9413,6.958), zoom: 13 })
+
+  window.markerLayers = []
 
   cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/29dbe9cf32a84247b2513fc03266b085/997/256/{z}/{x}/{y}.png');
   map.addLayer(cloudmade)
+  map
 
-  if data.length > 0
+addGeoPoints = (map, data=[]) ->
+  if data.length == 0
+    center = new L.LatLng(50.941252, 6.958283)
+    map.setView(center, 13)
+  else
     drawEachLocation(map, data)
     map.fitBounds(getPoints(data))
-
 
 drawEachLocation = (map, locations)->
   for location in locations
@@ -28,6 +31,7 @@ drawEachLocation = (map, locations)->
     descr += " #{location.city}" if location.city?
     descr += "<br/><small>#{location.lat}, #{location.lon} (#{location.accuracy})</small>"
 
+    window.markerLayers.push marker
     map.addLayer(marker)
     marker.bindPopup(descr)
 
@@ -81,19 +85,29 @@ showTutorialTooltip = ->
   return results[1] || 0;
 }`
 
-$ ->
+executeSearch = (map, search_for) ->
+  for layer in window.markerLayers
+    map.removeLayer layer
+
+  geocode_api_call = "/api/geocodes?query=#{search_for}"
+  $.get geocode_api_call, (data)=>
+    addGeoPoints(map, data)
+
+$ =>
   unless $.cookie('tooltip-shown')
     showTutorialTooltip()
 
   search_for = $.urlParam('query')
-  geocode_api_call = "/api/geocodes"
+
+  map = initHappyMap()
 
   if search_for
-    geocode_api_call += "?query=#{search_for}"
-
-  $.get geocode_api_call, (data)->
-    initHappyMap(data)
+    executeSearch(map, search_for)
 
   ($ window).resize =>
     maximizeMap(($ '#happyMap'))
+
+  $(".form-search").on "submit", =>
+    executeSearch(map, $(".search-query").val())
+    false
 
