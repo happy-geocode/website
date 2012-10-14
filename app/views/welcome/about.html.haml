@@ -73,6 +73,16 @@
               .vita
                 %h4.happy-caption= hero[:name]
                 %p= hero[:desc]
-              = link_to "Github", hero[:github], target: '_blank', class: 'pull-left'
-              = link_to "Twitter", hero[:twitter], target: '_blank', class: 'pull-right'
+              = link_to hero[:github],
+                  title: 'visit profile',
+                  target: '_blank',
+                  class: 'team-link pull-left' do
+                %i.icon-github
+                Github
+              = link_to hero[:twitter],
+                  title: 'visit profile',
+                  target: '_blank',
+                  class: 'team-link pull-right' do
+                Twitter
+                %i.icon-twitter
 
