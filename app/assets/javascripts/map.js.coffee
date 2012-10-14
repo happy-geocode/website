@@ -19,7 +19,17 @@ initHappyMap = (data=[])->
 drawEachLocation = (map, locations)->
   for location in locations
     marker = new L.Marker(new L.LatLng(location.lat, location.lng))
+
+    descr = "<strong>"
+    descr += "#{location.street_name}" if location.street_name?
+    descr += " #{location.street_number}" if location.street_number?
+    descr += "</strong><br/>"
+    descr += "#{location.zip}" if location.zip?
+    descr += " #{location.city}" if location.city?
+    descr += "<br/><small>#{location.accuracy} #{location.lat}, #{location.lng}</small>"
+
     map.addLayer(marker)
+    marker.bindPopup(descr)
 
 
 getPoints = (locations)->
