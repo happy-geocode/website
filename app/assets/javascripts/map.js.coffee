@@ -18,7 +18,15 @@ addGeoPoints = (map, data=[]) ->
     alert "I'm afraid I can't do that, Dave :(\nBut I will try to improve our dataset in the following weeks"
   else
     drawEachLocation(map, data)
-    map.fitBounds(getPoints(data))
+    points = getPoints(data)
+    if points.length == 1
+      if data.accuracy is "city" or data.accuray is "zip"
+        map.setView points[0], 11
+      else
+        map.setView points[0], 16
+
+    else
+      map.fitBounds(points)
 
 drawEachLocation = (map, locations)->
   for location in locations

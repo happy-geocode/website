@@ -22,6 +22,8 @@ class Geocoder
     # Try to find by street
     found_entries = find_streets(parsed)
 
+    Rails.logger.debug parsed.inspect
+
     # Continue searching if we didn't find anything
     if found_entries.empty?
       found_entries.concat find_zip_matches(parsed.zip) if parsed.zip
@@ -60,9 +62,18 @@ class Geocoder
   def find_zip_matches(zip)
     zip_matches = Zip.find_by_name(zip)
 
+    Rails.logger.debug zip
+
     zip_matches.map do |m|
-      m[:accuracy] = 'zip'
-      m[:accuracy_face] = ':/'
+      {
+        street: nil,
+        city: m.city,
+        zip: m.name,
+        lat: m.center["lat"],
+        lon: m.center["lon"],
+        accurarcy: 'zip',
+        accuracy_face: ':/'
+      }
     end
   end
 
@@ -70,8 +81,15 @@ class Geocoder
     city_matches = City.find_by_name(city)
 
     city_matches.map do |m|
-      m[:accuracy] = 'city'
-      m[:accuracy_face] = ':O'
+      {
+        street: nil,
+        city: m.name,
+        zip: nil,
+        lat: m.center["lat"],
+        lon: m.center["lon"],
+        accurarcy: 'city',
+        accuracy_face: ':O'
+      }
     end
   end
 

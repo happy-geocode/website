@@ -6,9 +6,9 @@ GIT
 
 GIT
   remote: git@github.com:happy-geocode/parsec.git
-  revision: 4070067e0ca3d6432b904b97ae32484b12617ebf
+  revision: 690353dee9f5ca637240408164b69c7191407527
   specs:
-    parsec (0.0.1)
+    parsec (0.1.0)
 
 GEM
   remote: https://rubygems.org/
