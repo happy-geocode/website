@@ -1,8 +1,8 @@
-initHappyMap = (data={})->
+initHappyMap = (data=[])->
   if ($ '#happyMap').size() < 1
     return
 
-  unless data
+  if data.length == 0
     center = new L.LatLng(50.941252, 6.958283)
 
   maximizeMap(($ '#happyMap'))
@@ -11,9 +11,9 @@ initHappyMap = (data={})->
   cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/29dbe9cf32a84247b2513fc03266b085/997/256/{z}/{x}/{y}.png');
   map.addLayer(cloudmade)
 
-  if data
-    drawEachLocation(map, data.locations)
-    map.fitBounds(getPoints(data.locations))
+  if data.length > 0
+    drawEachLocation(map, data)
+    map.fitBounds(getPoints(data))
 
 
 drawEachLocation = (map, locations)->
@@ -65,7 +65,7 @@ showTutorialTooltip = ->
 $ ->
   showTutorialTooltip()
 
-  $.get '/api/geocodes', 'json', (data)->
+  $.get '/api/geocodes?query=', 'json', (data)->
     initHappyMap(data)
 
   ($ window).resize =>
