@@ -10,6 +10,6 @@
           = link_to 'example', '/#example', color: '#fff'
           if you need help.
       .input-append
-        %input.search-query{ type: 'text', name: 'query' }
+        %input.search-query{ type: 'text', name: 'query', value: params[:query] }
         %button.btn
           %i.icon-search
