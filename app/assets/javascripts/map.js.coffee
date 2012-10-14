@@ -64,13 +64,12 @@ showTutorialTooltip = ->
   # Save cookie so the tooltip can be omitted after first load
   $.cookie('tooltip-shown', 'true', { path: '/' })
 
-  t = null
   hideTooltip = ->
     ($ '#mapSearch').hideBalloon()
-    clearTimeout(t)
-  t = setTimeout(hideTooltip, 5000)
 
   ($ '#mapSearch .search-query').focus ->
+    hideTooltip()
+  ($ '#mapTooltip .close').click ->
     hideTooltip()
 
 `$.urlParam = function(name){
