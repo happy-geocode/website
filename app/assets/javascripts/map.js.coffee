@@ -18,7 +18,7 @@ initHappyMap = (data=[])->
 
 drawEachLocation = (map, locations)->
   for location in locations
-    marker = new L.Marker(new L.LatLng(location.lat, location.lng))
+    marker = new L.Marker(new L.LatLng(location.lat, location.lon))
 
     descr = "<strong>"
     descr += "#{location.street_name}" if location.street_name?
@@ -26,7 +26,7 @@ drawEachLocation = (map, locations)->
     descr += "</strong><br/>"
     descr += "#{location.zip}" if location.zip?
     descr += " #{location.city}" if location.city?
-    descr += "<br/><small>#{location.accuracy} #{location.lat}, #{location.lng}</small>"
+    descr += "<br/><small>#{location.accuracy} #{location.lat}, #{location.lon}</small>"
 
     map.addLayer(marker)
     marker.bindPopup(descr)
@@ -35,7 +35,7 @@ drawEachLocation = (map, locations)->
 getPoints = (locations)->
   points = []
   for location in locations
-    points.push [location.lat, location.lng]
+    points.push [location.lat, location.lon]
   return points
 
 

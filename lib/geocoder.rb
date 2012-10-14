@@ -27,7 +27,7 @@ class Geocoder
       state: parsed.state,
       country: "Germany",
       lat: 50.937229,
-      lng: 6.832788,
+      lon: 6.832788,
       accuracy: 'exact',
       accuracy_face: ":)"
     }]
