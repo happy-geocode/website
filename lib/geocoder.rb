@@ -39,7 +39,7 @@ class Geocoder
     search_options = {}
     search_options[:street] = parsed.street_name
     search_options[:zip] = parsed.zip if parsed.zip
-    search_options[:city] = parsed.city if parsed.city
+    search_options[:city] = parsed.city if parsed.city && !parsed.zip
 
     street_matches = Street.find(search_options)
 
@@ -47,7 +47,8 @@ class Geocoder
       spoint = s.street_points.first
       {
         street: s.name,
-        city: s.city.name,
+        city: s.city_name,
+        zip: s.zip,
         lat: spoint.lat,
         lon: spoint.lon,
         accurarcy: 'street',
