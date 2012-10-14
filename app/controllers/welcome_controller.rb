@@ -13,21 +13,21 @@ class WelcomeController < ApplicationController
         name: "klaustopher",
         github: "https://github.com/klaustopher",
         twitter: "http://twitter.com/klaustopher",
-        desc: "Chocolate for the mob",
+        desc: %q{Chocolate for the mob},
         img: 'klaustopher.jpg'
       },
       {
         name: "moonglum",
         github: "https://github.com/moonglum",
         twitter: "http://twitter.com/moonbeamlabs",
-        desc: "Replaced his hair with <3",
+        desc: %q{Exchanged his hair for <3},
         img: 'moonglum.jpg'
       },
       {
         name: "EinLama",
         github: "https://github.com/EinLama",
         twitter: "http://twitter.com/l_ama",
-        desc: "Trying to minimize visual catastrophies",
+        desc: %q{That mustache is real!},
         img: 'EinLama.jpg'
       }
     ]
