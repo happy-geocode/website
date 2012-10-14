@@ -34,7 +34,37 @@ maximizeMap = (map)->
   map.height(($ window).height())
 
 
+showTutorialTooltip = ->
+  tooltip = ($ '#mapSearch').showBalloon(
+    contents: ($ '#mapTooltip').clone().show()
+    position: 'bottom'
+    delay: 200
+    showDuration: 100
+    showAnimation: -> ($ this).fadeIn()
+
+    css:
+      backgroundColor: 'rgba(0, 0, 0, 0.7)'
+      border: 'none'
+      borderRadius: 'none'
+      boxShadow: 'none'
+      padding: '10px'
+      color: '#D9EDF7'
+      opacity: 1
+  )
+
+  ($ '#mapSearch').focus ->
+    hideTooltip()
+
+  t = null
+  hideTooltip = ->
+    ($ '#mapSearch').hideBalloon()
+    clearTimeout(t)
+  t = setTimeout(hideTooltip, 5000)
+
+
 $ ->
+  showTutorialTooltip()
+
   $.get '/api/geocodes', 'json', (data)->
     initHappyMap(data)
 
