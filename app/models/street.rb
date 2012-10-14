@@ -22,10 +22,17 @@ class Street
   # end
 
   def Street.find(params)
-    city = City.find_by_name(params[:city]).first
-    lat = city.center["lat"]
-    lon = city.center["lon"]
-    radius = 2000 #city.radius
+    if params.has_key? :zip
+      zip = Zip.find_by_name(params[:zip]).first
+      lat = zip.center["lat"]
+      lon = zip.center["lon"]
+      radius = 2000 #city.radius
+    elsif params.has_key? :city
+      city = City.find_by_name(params[:city]).first
+      lat = city.center["lat"]
+      lon = city.center["lon"]
+      radius = 2000 #city.radius
+    end
 
     street_subquery = "(for street in streets filter street.name_normalized == '#{params[:street]}' return street.osm_id)"
 
@@ -37,9 +44,10 @@ class Street
     street_points = StreetPoint.find_by_aql query
 
     street = Street.first_example osm_id: street_points.sample.street_ref
-    street.city = city
 
-    street
+    street.city = city if city
+
+    [street]
   end
 
   def to_s

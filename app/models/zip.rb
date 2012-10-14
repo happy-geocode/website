@@ -8,4 +8,8 @@ class Zip
   attribute :radius
   attribute :state_ref
   attribute :country_ref
+
+  def Zip.find_by_name(name)
+    self.by_example name: name
+  end
 end
