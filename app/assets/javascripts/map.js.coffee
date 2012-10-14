@@ -2,9 +2,7 @@ initHappyMap = (data={})->
   if ($ '#happyMap').size() < 1
     return
 
-  if data
-    center = new L.LatLng(data.center.lat, data.center.lng)
-  else
+  unless data
     center = new L.LatLng(50.941252, 6.958283)
 
   maximizeMap(($ '#happyMap'))
@@ -15,12 +13,20 @@ initHappyMap = (data={})->
 
   if data
     drawEachLocation(map, data.locations)
+    map.fitBounds(getPoints(data.locations))
 
 
 drawEachLocation = (map, locations)->
   for location in locations
     marker = new L.Marker(new L.LatLng(location.lat, location.lng))
     map.addLayer(marker)
+
+
+getPoints = (locations)->
+  points = []
+  for location in locations
+    points.push [location.lat, location.lng]
+  return points
 
 
 maximizeMap = (map)->

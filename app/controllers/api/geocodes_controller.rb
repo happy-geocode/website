@@ -5,10 +5,6 @@ module Api
     def show
 
       fake_data = {
-        center: {
-          lat: 50.939771,
-          lng: 6.887213
-        },
         locations: [
           {
             street_name: 'An der Alten Post',
