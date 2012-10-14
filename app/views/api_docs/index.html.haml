@@ -11,7 +11,7 @@
   The result will be an array list of geocoded addresses. Each address has a qualifier that
   explains the quality of the match.
 
-.code= CodeRay.scan("[{\n  \"street_name\": \"Bruesseler Strasse\",\n  \"street_number\": \"55\",\n  \"zip\": \"50672\",\n  \"city\": \"Köln\",\n  \"state\": \"NRW\",\n  \"country\": \"Germany\",\n  \"lat\": 50.937966,\n  \"lon\": 6.934578,\n  \"accuracy\": \"exact\",\n  \"accuracy_face\": \":)\"\n}]", :json).div.html_safe
+.code= CodeRay.scan("[{\n  \"street_name\": \"Bruesseler Strasse\",\n  \"street_number\": \"55\",\n  \"zip\": \"50672\",\n  \"city\": \"Köln\",\n  \"state\": \"NRW\",\n  \"country\": \"Germany\",\n  \"lat\": 50.937966,\n  \"lon\": 6.934578,\n  \"accuracy\": \"exact\",\n  \"accuracy_face\": \":D\"\n}]", :json).div.html_safe
 
 :markdown
   Most of the fields are self explanitory. If the match is not exact, the result array will contain several entries.
