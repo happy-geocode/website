@@ -28,13 +28,13 @@ class Street
       lon = city.center["lon"]
       radius = city.radius
     else
-      return Street.find_by_name params[:name]
+      return Street.find_by_name params[:street]
     end
 
     osm_ids = Ashikawa::AR::Setup.databases[:default].query "for street in streets filter street.name_normalized == '#{params[:street]}' return { osm_id: street.osm_id }"
     osm_ids = osm_ids.map { |raw| raw["osm_id"] }
 
-    street_subquery = "['" + osm_ids.join("', '") + "']"
+    street_subquery = street_subquery.join ", "
 
     query = "for street_point in within(street_points, #{lat}, #{lon}, #{radius}) " +
             "filter street_point.street_ref in #{street_subquery} " +
