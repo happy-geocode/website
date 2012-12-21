@@ -34,7 +34,7 @@ gem 'coderay'
 gem 'capistrano'
 
 # natural language parser for addresses
-gem 'parsec', git: "git@github.com:happy-geocode/parsec.git"
+gem 'parsec', github: "happy-geocode/parsec"
 
 group :production do
   gem 'therubyracer'
